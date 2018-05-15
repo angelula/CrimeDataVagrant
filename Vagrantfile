@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: "scripts/provision_script.sh"
 
   config.vm.provider :virtualbox do |vb|
-    vb.gui = true
+    vb.gui = false 
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
     vb.customize ["modifyvm", :id, "--vram", "128"]
