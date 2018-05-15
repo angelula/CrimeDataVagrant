@@ -4,7 +4,8 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 3000, host:8080, protocol: "tcp"
   config.vm.network "forwarded_port", guest: 22, host:222, protocol: "tcp"
   config.vm.synced_folder ".", "/vagrant", type: "nfs", :mount_options => ["dmode=755","fmode=755"]
-  
+  config.vm.provision "shell", path: "scripts/provision_script.sh"
+
   config.vm.provider :virtualbox do |vb|
     vb.gui = true
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
