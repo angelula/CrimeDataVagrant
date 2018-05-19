@@ -46,8 +46,15 @@ apt-get -y install nodejs >> /vagrant/vm_build.log 2>&1
 
 echo -e "\n--- Updating project components and pulling latest versions ---\n"
 
-cd /vagrant
+echo -e "\n--- Install GITK ---\n"
+sudo apt install gitk
 
-if [[ -s /vagrant/package.json ]] ;then
+echo -e "\n--- Cloning the project ---\n"
+cd /home/vagrant/
+git clone https://github.com/angelula/CrimeData.git
+
+if [[ -s /home/vagrant/CrimeData/package.json ]] ;then
   sudo -u vagrant -H sh -c "npm install" >> /vagrant/vm_build.log 2>&1
 fi
+
+
